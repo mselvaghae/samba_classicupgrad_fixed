@@ -853,6 +853,9 @@ Please fix this account before attempting to upgrade again
                      result.paths.root_uid, result.paths.root_gid,
                      security.dom_sid(result.domainsid), result.names.dnsdomain,
                      result.names.domaindn, result.lp, use_ntvfs)
+         except Exception as e:
+                  logger.warning("setsysvolacl failed (LXC/container): %s - "
+                                 "run samba-tool ntacl sysvolreset after start", e)
 
     # FIXME: import_registry(registry.Registry(), samba3.get_registry())
     # FIXME: shares
